@@ -38,39 +38,93 @@ Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
 
+![image](https://github.com/user-attachments/assets/b902d982-3c07-4844-aa38-40ed185c2c85)
+
+![image](https://github.com/user-attachments/assets/1e358a1e-7b8d-4562-8840-c761b5086dcb)
+
+```
 **Procedure**
-
-Write the detailed procedure here
-
+1. Type the program in Quartus software.
+2. Compile and run the program.
+3. Generate the RTL schematic and save the logic diagram.
+4. Create nodes for inputs and outputs to generate the timing diagram.
+5. For different input combinations generate the timing diagram
+```
 **Program:**
 ```
 /* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. 
 Developed by:janani.s 
-RegisterNumber:24901127
-*/
+RegisterNumber:24901127*/
 ```
 ```
-module exe_4(df,bo,a,b,bin);
-output df;
-output bo;
+//full adder
+
+module ex04(sum, cout, a, b, cin);
+
+output sum;
+
+output cout;
+
 input a;
+
 input b;
+
+input cin;
+
+//internal nets
+
+wire sl,cl,c2;
+
+//Instantiate logic gate primitives xor (sl,a,b);
+
+and(cl,a,b);
+
+xor (sum, sl, cin);
+
+and(c2, sl, cin);
+
+or(cout, c2,cl);
+
+endmodule
+
+Full subractor
+
+module ex04a (df, bo, a, b, bin);
+
+output df;
+
+output bo;
+
+input a;
+
+input b;
+
 input bin;
-wire w1,w2,w3;
+
+wire w1,w2, w3;
+
 assign w1=a^b;
+
 assign w2=(~a&b);
-assign w3=(~w1&bin);
-assign df=w1^bin;
-assign bo=w2|w3;
+
+assign w3=(-w1&bin);
+
+assign df-w1^bin;
+
+assign bo-w2/w3;
+
 endmodule
 ```
 **RTL Schematic**
-![WhatsApp Image 2024-11-18 at 18 35 56_61ea66e7](https://github.com/user-attachments/assets/5cfcea77-7226-459b-baec-1d2a6acfa587)
-![WhatsApp Image 2024-11-18 at 18 36 39_56fda2c1](https://github.com/user-attachments/assets/45c0f02f-de5d-4c90-8697-9c5374204406)
+
+![image](https://github.com/user-attachments/assets/a34e7a9a-d915-42f2-82a3-de614ca51471)
+![image](https://github.com/user-attachments/assets/6702c12b-0c42-4b35-abb2-b9b7c912f698)
 
 **Output Timing Waveform**
-![WhatsApp Image 2024-11-18 at 18 39 44_98bcacaf](https://github.com/user-attachments/assets/ea3c932b-91f4-403a-aa97-1a9907d6e32f)
-![WhatsApp Image 2024-11-18 at 18 39 46_36ec78b3](https://github.com/user-attachments/assets/ceae1b7a-18de-4c10-8c30-0e6c0206f554)
+![image](https://github.com/user-attachments/assets/2ec2bb33-83f8-47b1-af8e-192726748b2a)
+
+![image](https://github.com/user-attachments/assets/db78c9af-0fd9-44b8-b982-90711d25576b)
+
 
 **Result:**
 
