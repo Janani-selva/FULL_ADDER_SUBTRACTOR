@@ -56,6 +56,7 @@ Borrow out = A'Bin + A'B + BBin
 Developed by:janani.s 
 RegisterNumber:24901127*/
 ```
+
 ```
 full adder
 
